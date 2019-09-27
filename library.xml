@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Library>
+    <Catalogue category="Technical">
+        <Book>
+            <ISBN>1491957662</ISBN>
+            <Title>Python for Data Analysis</Title>
+            <Author>Wes McKinney</Author>
+        </Book>
+        <Book>
+            <ISBN>1491962291</ISBN>
+            <Title>Hands-On Machine Learning with Scikit-Learn & TensorFlow</Title>
+            <Author>Aurelien Geron</Author>
+        </Book>
+    </Catalogue>
+    <Catalogue category="Cookery">
+        <Book>
+            <ISBN>1544837410</ISBN>
+            <Title>The New 5:2 Diet Cookbook</Title>
+            <Author>Jacqueline Whitehart</Author>
+        </Book>
+        <Book>
+            <ISBN>0399579222</ISBN>
+            <Title>Mastering Pizza</Title>
+            <Author>Marc Vetri</Author>
+        </Book>
+    </Catalogue>
+</Library>
