@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>View cars</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Cars</h1>
+        <div>
+            <button>Create</button>
+        </div>
+        <div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">reg</th>
+                    <th scope="col">make</th>
+                    <th scope="col">model</th>
+                    <th scope="col">price</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>191 MO 123</td>
+                    <td>Ford</td>
+                    <td>Modeo</td>
+                    <td>25,000</td>
+                    <td><button>update</button></td>
+                    <td><button>delete</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2><span>Create a </span><span>Update this</span> Car</h2>
+
+        <div>
+            Reg <input type="text" name="reg"><br/>
+            Make <select name="make">
+                    <option value="Ford"></option>
+                    <option value="Fiat"></option>
+                    <option value="Nissan"></option>
+                </select><br/>
+            Model <input type="text" name="model"><br/>
+            Price <input type="number" name="price"><br/>
+            <span><button>Create</button></span>
+            <span><butoon>Update</butoon></span>
+            
+        </div>
+    </body>
+</html>
