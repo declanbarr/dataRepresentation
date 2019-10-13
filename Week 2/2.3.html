@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Input displayed in another div
+        </title>
+    </head>
+    <body>
+        <input id="user" type"text" value="Hello, please enter your name."/>
+        <button onclick="buttonPressed()">Press for response</button>
+        <div id="response"></div>
+
+        <script>
+                function buttonPressed(){
+                    var response = document.getElementById('user').value
+                    document.getElementById('response').innerText = "Hello " + response + " pleased to meet you!"
+                }
+            </script>
+
+    </body>
+    
+</html>
