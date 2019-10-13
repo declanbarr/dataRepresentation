@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Store selected row in an object and then output to the console
+        </title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>Tim Berners-Lee</td>
+                <td>Brendan Eich</td>
+                <td>Håkon Wium Lie</td>
+                <td><button onclick="addRows(this)"></button></td>
+            </tr>
+        </table>
+        <script>
+            function addRows(buttonElement){
+                var rowElement = buttonElement.parentNode.parentNode
+                var names = {}
+                names.cell1 = rowElement.cells[0].firstChild.textContent;
+                names.cell2 = rowElement.cells[1].firstChild.textContent;
+                names.cell3 = rowElement.cells[2].firstChild.textContent;
+
+                console.log(JSON.stringify(names))
+            }
+        
+        </script>
+    </body>
+</html>
