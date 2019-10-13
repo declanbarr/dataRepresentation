@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Visible divs
+        </title>
+    </head>
+    <body>
+        <div id="div1" style="background-color: rgb(156, 25, 216)">
+            <br/>
+                Div1
+            <br/>
+            <button onclick="div2Visible()">Make div2 visible</button>
+        </div>
+
+        <div id="div2" style="background-color: rgb(231, 50, 18)">
+            <br/>
+                Div2
+            <br/>
+            <button onclick="div1Visible()">Make div1 visible</button>
+        </div>
+        <script>
+            function div1Visible(){
+                document.getElementById("div1").style.display = "inline";
+                document.getElementById("div2").style.display = "none";
+            }
+            function div2Visible(){
+                document.getElementById("div1").style.display = "none";
+                document.getElementById("div2").style.display = "inline";
+            }
+        </script>
+    </body>
+</html>
