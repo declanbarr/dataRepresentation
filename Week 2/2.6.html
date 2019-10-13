@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Guess the number
+        </title>
+    </head>
+    <body>
+        <input type="number" onchange="numberGuess(this)"/>
+        <br/>
+        <div id="usersGuess">
+            Guess the number
+        </div>
+        <script>
+            function numberGuess(guess){
+                var guessValue = guess.value
+                if (guessValue < 10){
+                    document.getElementById("usersGuess").innerText = "Higher"
+                }else if (guessValue > 10){
+                    document.getElementById("usersGuess").innerText = "Lower"
+                }else{
+                    document.getElementById("usersGuess").innerText = "Correct, the answer is 10"
+                }
+            }
+        </script>
+    </body>
+</html>
