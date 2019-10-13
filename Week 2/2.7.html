@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Outputting values from a loop and an array
+        </title>
+    </head>
+    <body>
+        <div id ="shoppingOutput">
+            Output of array
+        </div>
+
+        <script>
+            for (var i=0; i<=10; i++){
+                document.write(i + " ");
+            }
+            
+            var shoppingList=["Milk", "Bread", "Potatoes", "Bananas", "Chocolate", "Apples", "Watermelon"]
+            var shoppingOutput = ""
+            for (item of shoppingList){
+                shoppingOutput += item + " ";
+            }
+            document.getElementById("shoppingOutput").innerHTML = shoppingOutput
+        </script>
+
+    </body>
+</html>
