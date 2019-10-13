@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Outputting user input to the console
+        </title>
+    </head>
+    <body>
+        <div id="carInfo">
+            Car Make: <input type="text" name="carMake"/><br/>
+            Car Model: <input type="text" name="carModel"/><br/>
+            Registration: <input type="text" name="carReg"/><br/>
+            <button onclick="carForm()">Add Details</button>
+        </div>
+
+        <script>
+            function carForm(){
+                var car = {}
+                var form = document.getElementById("carInfo")
+                car.carMake = form.querySelector('input[name="carMake"').value
+                car.carModel = form.querySelector('input[name="carModel"').value
+                car.carReg = form.querySelector('input[name="carReg"').value
+                console.log("Car entered: " + JSON.stringify(car))
+            }
+
+        </script>
+
+
+
+
+    </body>
+</html>
