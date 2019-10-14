@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Store selected row in an object and then output to the console
+        </title>
+    </head>
+    <body>
+        <table id="inventerTable">
+            <tr>
+                <td>Tim Berners-Lee</td>
+                <td>Brendan Eich</td>
+                <td>Håkon Wium Lie</td>
+                <td><button onclick="addRows(this)"></button></td>
+            </tr>
+        </table>
+        <button onclick="createNewRow()">Create a new row</button>
+        <script>
+            function addRows(buttonElement){
+                var rowElement = buttonElement.parentNode.parentNode
+                var names = {}
+                names.cell1 = rowElement.cells[0].firstChild.textContent;
+                names.cell2 = rowElement.cells[1].firstChild.textContent;
+                names.cell3 = rowElement.cells[2].firstChild.textContent;
+
+                console.log(JSON.stringify(names))
+            }
+        
+            function createNewRow(){
+            var tableElement = document.getElementById('inventerTable')
+            var data = {cell1:'HTML',cell2:'JavaScript',cell3:'CSS'}
+            var rowElement = tableElement.insertRow(-1)
+            var cellElement = rowElement.insertCell(0)
+            cellElement.innerHTML = data.cell1;
+            cellElement = rowElement.insertCell(1)
+            cellElement.innerHTML = data.cell2;
+            cellElement = rowElement.insertCell(2)
+            cellElement.innerHTML = data.cell3;
+            
+        }
+        </script>
+    </body>
+</html>
