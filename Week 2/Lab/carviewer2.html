@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>View cars</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Cars</h1>
+        <div>
+            <button id="showCreateButton" onclick="showCreate()">Create</button>
+        </div>
+        <div>
+            <table class="table" id= "carTable">
+                <thead>
+                <tr>
+                    <th scope="col">reg</th>
+                    <th scope="col">make</th>
+                    <th scope="col">model</th>
+                    <th scope="col">price</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>191 MO 123</td>
+                    <td>Ford</td>
+                    <td>Modeo</td>
+                    <td>25,000</td>
+                    <td><button>update</button></td>
+                    <td><button>delete</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2><span id="createLabel">Create a </span><span id="updateLabel">Update this</span> Car</h2>
+
+        <div id="createUpdateForm" style="diplay: none">
+            Reg <input type="text" name="reg"><br/>
+            Make <select name="make">
+                    <option value="Ford"></option>
+                    <option value="Fiat"></option>
+                    <option value="Nissan"></option>
+                </select><br/>
+            Model <input type="text" name="model"><br/>
+            Price <input type="number" name="price"><br/>
+            <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
+            <span><butoon id="doUpdateButton" onclick="doUpdate()">Update</butoon></span>
+            
+        </div>
+    </body>
+</html>
+<script>
+function showCreate(){
+    document.getElementById("showCreateButton").style.display="none"
+    document.getElementById("carTable").style.display="none"
+    document.getElementById("createUpdateForm").style.display="block"
+}
+
+</script>
