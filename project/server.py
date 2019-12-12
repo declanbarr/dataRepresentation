@@ -1,5 +1,5 @@
 # Import Flask
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, abort
 
 # Creating an instance of the flask class
 app = Flask(__name__, static_url_path='', static_folder='.')
@@ -31,11 +31,25 @@ def findProductById(id):
 
     return jsonify(foundProducts[0])
 
+# curl -i -H "Content-Type:application/json" -X POST -d "{\"Product\":\"newProduct\",\"Brand\":\"newBrand\",\"Model\":\"newModel\", \"Price\":99.99}" http://127.0.0.1:5000/products
 # URL that will trigger the create function
 @app.route('/products', methods=['POST'])
-# Function to return "In create" as a http response
+# Function to create a new product
 def create():
-    return "In create"
+    global nextId
+    # If server is unable to process request then return status code 400
+    if not request.json:
+        abort(400)
+    product = {
+        "id": nextId,
+        "Product": request.json['Product'],
+        "Brand": request.json['Brand'],
+        "Model": request.json['Model'],
+        "Price": request.json['Price']
+    }
+    nextId += 1
+    products.append(product)
+    return jsonify(product)
 
 # URL that will trigger the update function
 @app.route('/products/<int:id>', methods=['PUT'])
