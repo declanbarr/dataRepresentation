@@ -15,15 +15,21 @@ nextId=5
 # curl "http://127.0.0.1:5000/products"
 # URL that will trigger the getAllProducts function
 @app.route('/products')
-# Function to return "In getAllProducts" as a http response
+# Function to return all products as a http response
 def getAllProducts():
 	return jsonify(products)
 
+# curl "http://127.0.0.1:5000/products/1"
 # URL that will trigger the findProductById function
 @app.route('/products/<int:id>')
-# Function to return "In In findProductById for id" as a http response
+# Function to return product by id as a http response
 def findProductById(id):
-    return "In findProductById for id " +str(id)
+    foundProducts = list(filter(lambda t: t['id'] == id, products))
+    # Return status code 204 if no content found
+    if len(foundProducts) == 0:
+        return jsonify ({}), 204
+
+    return jsonify(foundProducts[0])
 
 # URL that will trigger the create function
 @app.route('/products', methods=['POST'])
