@@ -1,15 +1,23 @@
 # Import Flask
-from flask import Flask
+from flask import Flask, jsonify
 
 # Creating an instance of the flask class
 app = Flask(__name__, static_url_path='', static_folder='.')
 
+products=[
+    {"id":1, "Product":"TV", "Brand":"Samsung", "Model":"Ru7100", "Price":399.84},
+    {"id":2, "Product":"TV", "Brand":"Philips", "Model":"32PHT4504/05", "Price":159.00},
+    {"id":3, "Product":"Laptop", "Brand":"ASUS", "Model":"E406MA", "Price":214.99},
+    {"id":4, "Product":"Printer", "Brand":"Brother", "Model":"DCP-J572DW", "Price":90.00},
+]
+nextId=5
 
+# curl "http://127.0.0.1:5000/products"
 # URL that will trigger the getAllProducts function
 @app.route('/products')
 # Function to return "In getAllProducts" as a http response
 def getAllProducts():
-	return "In getAllProducts"
+	return jsonify(products)
 
 # URL that will trigger the findProductById function
 @app.route('/products/<int:id>')
