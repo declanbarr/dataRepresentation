@@ -37,7 +37,7 @@ def findProductById(id):
 # Function to create a new product
 def create():
     global nextId
-    # If server is unable to process request then return status code 400
+    # If server is unable to process request then abort with 400 message code
     if not request.json:
         abort(400)
     product = {
@@ -51,11 +51,37 @@ def create():
     products.append(product)
     return jsonify(product)
 
+# curl -i -H "Content-Type:application/json" -X PUT -d "{\"Price\":1000}" http://127.0.0.1:5000/products/1
 # URL that will trigger the update function
 @app.route('/products/<int:id>', methods=['PUT'])
-# Function to return "In update for id" as a http response
+# Function to update a Product
 def update(id):
-    return "In update for id" + str(id)
+    foundProducts = list(filter(lambda t: t['id']== id, products))
+    # If there are no products found then abort with 404 message code
+    if (len(foundProducts) == 0):
+        abort(404)
+    
+    foundProduct = foundProducts[0]
+    # If server is unable to process request then abort with 400 message code
+    if not request.json:
+        abort(400)
+    
+    reqJson = request.json
+    
+    # If price is not an int then abort with 400 message code
+    if 'Price' in reqJson and type(reqJson['Price']) is not int:
+        abort(400)
+    if 'Product' in reqJson:
+        foundProduct['Product'] = reqJson['Product']
+    if 'Brand' in reqJson:
+        foundProduct['Brand'] = reqJson['Brand']
+    if 'Model' in reqJson:
+        foundProduct['Model'] = reqJson['Model']
+    if 'Price' in reqJson:
+        foundProduct['Price'] = reqJson['Price']
+    
+    return jsonify(foundProduct)
+
 
 # URL that will trigger the delete function
 @app.route('/products/<int:id>', methods=['DELETE'])
