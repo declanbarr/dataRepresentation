@@ -82,13 +82,19 @@ def update(id):
     
     return jsonify(foundProduct)
 
-
+# curl -X DELETE "http://127.0.0.1:5000/products/1"
 # URL that will trigger the delete function
 @app.route('/products/<int:id>', methods=['DELETE'])
 # Function to return "In delete for id" as a http response
 def delete(id):
-    return "In delete for id " + str(id)
-
+    # Create a list of products with the id passed to the function
+    foundProducts = list(filter(lambda t: t['id']==id, products))
+    # If there are no products found then abort with 404 message code
+    if (len(foundProducts) == 0):
+        abort(404)
+    # Remove the product
+    products.remove(foundProducts[0])
+    return jsonify({"done":True})
 
 if __name__ == '__main__':
     app.run(debug= True)
