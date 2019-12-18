@@ -67,4 +67,4 @@ class ProductDAO:
         
         return item
         
-bookDAO = BookDAO()
+productDAO = ProductDAO()
