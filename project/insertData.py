@@ -22,7 +22,7 @@ cursor = db.cursor()
 for i in range(len(products)):
 
     sql="insert into product (Product, Brand, Model, Price) values (%s, %s, %s, %s)"
-    values = (products[0]["Product"], products[0]["Brand"], products[0]["Model"], products[0]["Price"])
+    values = (products[i]["Product"], products[i]["Brand"], products[i]["Model"], products[i]["Price"])
 
     cursor.execute(sql, values)
 

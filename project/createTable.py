@@ -9,6 +9,6 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-sql="CREATE TABLE student (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), age INT)"
+sql="CREATE TABLE product (id INT AUTO_INCREMENT PRIMARY KEY, Product VARCHAR(255), Brand VARCHAR(255), Model VARCHAR(255), Price FLOAT)"
 
 mycursor.execute(sql)
