@@ -10,7 +10,7 @@ app = Flask(__name__, static_url_path='', static_folder='.')
 # URL that will trigger the getAllProducts function
 @app.route('/products')
 # Function to return all products as a http response
-def getAllProducts():
+def getAll():
     results = productDAO.getAll()
     return jsonify(results)
 
@@ -18,7 +18,7 @@ def getAllProducts():
 # URL that will trigger the findProductById function
 @app.route('/products/<int:id>')
 # Function to return product by id as a http response
-def findProductById(id):
+def findById(id):
     foundProduct = productDAO.findByID(id)
     return jsonify(foundProduct)
 
@@ -34,7 +34,7 @@ def create():
         "Product": request.json['Product'],
         "Brand": request.json['Brand'],
         "Model": request.json['Model'],
-        "Price": request.json['Price']
+        "Price": request.json['Price'],
     }
     values =(product['Product'],product['Brand'],product['Model'],product['Price'])
     newId = productDAO.create(values)
