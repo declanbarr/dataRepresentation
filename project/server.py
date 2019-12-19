@@ -8,7 +8,7 @@ app = Flask(__name__, static_url_path='', static_folder='.')
 
 # curl "http://127.0.0.1:5000/products"
 # URL that will trigger the getAllProducts function
-@app.route('/products')
+@app.route('/product')
 # Function to return all products as a http response
 def getAll():
     results = productDAO.getAll()
@@ -16,7 +16,7 @@ def getAll():
 
 # curl "http://127.0.0.1:5000/products/1"
 # URL that will trigger the findProductById function
-@app.route('/products/<int:id>')
+@app.route('/product/<int:id>')
 # Function to return product by id as a http response
 def findById(id):
     foundProduct = productDAO.findByID(id)
@@ -24,7 +24,7 @@ def findById(id):
 
 # curl -i -H "Content-Type:application/json" -X POST -d "{\"Product\":\"newProduct\",\"Brand\":\"newBrand\",\"Model\":\"newModel\", \"Price\":99.99}" http://127.0.0.1:5000/products
 # URL that will trigger the create function
-@app.route('/products', methods=['POST'])
+@app.route('/product', methods=['POST'])
 # Function to create a new product
 def create():
     # If server is unable to process request then abort with 400 message code
@@ -43,7 +43,7 @@ def create():
 
 # curl -i -H "Content-Type:application/json" -X PUT -d "{\"Price\":1000}" http://127.0.0.1:5000/products/1
 # URL that will trigger the update function
-@app.route('/products/<int:id>', methods=['PUT'])
+@app.route('/product/<int:id>', methods=['PUT'])
 # Function to update a Product
 def update(id):
     foundProduct = productDAO.findByID(id)
@@ -73,7 +73,7 @@ def update(id):
 
 # curl -X DELETE "http://127.0.0.1:5000/products/1"
 # URL that will trigger the delete function
-@app.route('/products/<int:id>', methods=['DELETE'])
+@app.route('/product/<int:id>', methods=['DELETE'])
 # Function to delete record
 def delete(id):
     productDAO.delete(id)
