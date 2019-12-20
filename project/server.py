@@ -1,10 +1,41 @@
 # Import Flask
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, session
 from productDAO import productDAO
+
+# Creating the secret key
+app.secret_key = 'secretKey2983475837hk43yuwerit7y'
 
 # Creating an instance of the flask class
 app = Flask(__name__, static_url_path='', static_folder='.')
 
+# Creating page counter
+@app.route("/session")
+def mySession():
+    # Starting page counter at 1
+    count = 0
+    count += 1
+
+    # Set counter to 0 if counter not in session
+    if not 'counter' in session:
+        session['counter'] = 0
+        print('New Session')
+
+    # Increase sessionCount by 1 if the user revists the page    
+    sessionCount = session['counter']
+    sessionCount += 1
+    session['counter'] =  sessionCount
+
+    # Displaying the session count
+    sessionCount =   "Session Count =" + str(sessionCount) 
+    
+    return sessionCount
+
+# Clearing the session
+@app.route('/clear')
+def clear():
+    session.pop('counter', None)
+
+    return 'Session Cleared'
 
 # curl "http://127.0.0.1:5000/products"
 # URL that will trigger the getAllProducts function
