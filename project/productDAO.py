@@ -1,13 +1,15 @@
 import mysql.connector
+import dbconfig as cfg
+
 class ProductDAO:
     db=""
     def __init__(self): 
         self.db = mysql.connector.connect(
-        host="localhost",
-        port="3308",
-        user="root",
-        password="",
-        database="datarepresentation"
+        host=cfg.mysql['host'],
+        port=cfg.mysql['port'],
+        user=cfg.mysql['user'],
+        password=cfg.mysql['password'],
+        database=cfg.mysql['database']
         )
         
     def create(self, values):
