@@ -37,6 +37,8 @@
             <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
             
         </div>
+    </br>   
+        <div id="sessionCounter" style="diplay: block"></div>
     </body>
     <script>
 
@@ -180,6 +182,11 @@
         return product
     }
 
+    function showSession(session){
+        document.getElementById("sessionCounter").innerHTML = session;
+        //document.getElementById("sessionCounter").innerHTML = "session test";
+    }
+
     function getAllAjax(){
         $.ajax({
             "url": "http://127.0.0.1:5000/product",
@@ -190,6 +197,21 @@
                 for (product of result){
                     addProductToTable(product);
                 } 
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+    }
+
+    function getSessionAjax(){
+        $.ajax({
+            "url":"http://127.0.0.1:5000/session",
+            "method":"GET",
+            "data":"",
+            "dataType":"text",
+            "success":function(result){
+                showSession(result);
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
@@ -240,7 +262,7 @@
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
             "success":function(result){
-                //console.log(result);
+                
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
@@ -248,5 +270,7 @@
         });
     }
     getAllAjax();
+    getSessionAjax();
+
     </script>
 </html>

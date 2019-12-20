@@ -2,13 +2,14 @@
 from flask import Flask, jsonify, request, abort, session
 from productDAO import productDAO
 
-# Creating the secret key
-app.secret_key = 'secretKey2983475837hk43yuwerit7y'
-
 # Creating an instance of the flask class
 app = Flask(__name__, static_url_path='', static_folder='.')
 
+# Creating the secret key
+app.secret_key = 'secretKey2983475837hk43yuwerit7y'
+
 # Creating page counter
+# curl "http://127.0.0.1:5000/session"
 @app.route("/session")
 def mySession():
     # Starting page counter at 1
